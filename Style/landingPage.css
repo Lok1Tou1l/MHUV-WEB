@@ -150,7 +150,7 @@ a {
   border: rgba(0, 0, 0, 0.24) solid 2px;
   overflow: hidden;
 
-  border-radius: 28px;
+  border-radius: 0;
 }
 .ag-courses-item_link {
   display: block;
