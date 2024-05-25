@@ -104,3 +104,15 @@ input[type="submit"]:hover {
 .link:hover {
   text-decoration: underline;
 }
+
+.alert .alert-danger {
+  color: red;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.alert .alert-success {
+  color: green;
+  font-size: 12px;
+  margin-top: 10px;
+}
