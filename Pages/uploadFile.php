@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
       </div>
       <div class="form-outer">
-        <form action="#">
+        <form action="uploadFile.php" method='POST'>
           <div class="page slide-page">
             <div class="title">Basic Info:</div>
             <div class="field">
@@ -146,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <div class="page">
             <div class="title">House Image:</div>
             <div class="field">
-              <input type="file" id="myFile" name="filename" />
+              <input type="file" accept=".pdf" id="myFile" name="filename" />
             </div>
 
             <div class="field btns">
