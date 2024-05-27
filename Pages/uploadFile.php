@@ -1,3 +1,38 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $targetDir = "uploads/";
+  $targetFile = $targetDir . basename($_FILES["file"]["name"]);
+  $uploadOk = 1;
+  $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+  // Check if file is a PDF
+  if ($fileType != "pdf") {
+    echo "Only PDF files are allowed.";
+    $uploadOk = 0;
+  }
+
+  // Check if file already exists
+  if (file_exists($targetFile)) {
+    echo "File already exists.";
+    $uploadOk = 0;
+  }
+
+  // Check file size (optional)
+  if ($_FILES["file"]["size"] > 500000) {
+    echo "File size exceeds the limit.";
+    $uploadOk = 0;
+  }
+
+  // Upload file if all checks pass
+  if ($uploadOk == 1) {
+    if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
+      echo "File uploaded successfully.";
+    } else {
+      echo "Error uploading file.";
+    }
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
