@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
   }
 }
-?>
+?> 
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -60,39 +60,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           </div>
           <div class="check fas fa-check"></div>
         </div>
+
         <div class="step">
-          <p>Contact info</p>
+          <p>House info</p>
           <div class="bullet">
             <span>2</span>
           </div>
           <div class="check fas fa-check"></div>
         </div>
+
         <div class="step">
-          <p>House info</p>
+          <p>House Images</p>
           <div class="bullet">
             <span>3</span>
           </div>
           <div class="check fas fa-check"></div>
         </div>
-        <div class="step">
-          <p>upload pictures</p>
-          <div class="bullet">
-            <span>4</span>
-          </div>
-          <div class="check fas fa-check"></div>
-        </div>
       </div>
       <div class="form-outer">
-        <form action="uploadFile.php" method='POST'>
+        <form action="uploadFile.php" method="POST">
           <div class="page slide-page">
-            <div class="title">Basic Info:</div>
+            <div class="title">Personal Info:</div>
             <div class="field">
-              <div class="label">First Name</div>
-              <input type="text" required />
-            </div>
-            <div class="field">
-              <div class="label">Last Name</div>
-              <input type="text" required />
+              <div class="label">Your Name</div>
+              <input id="name" name="name" type="text" required />
             </div>
             <div class="field">
               <button class="firstNext next">Next</button>
@@ -100,43 +91,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           </div>
 
           <div class="page">
-            <div class="title">Contact Info:</div>
-            <div class="field">
-              <div class="label">Email Address</div>
-              <input type="text" required />
-            </div>
-            <div class="field">
-              <div class="label">Phone Number</div>
-              <input type="Number" required />
-            </div>
-            <div class="field btns">
-              <button class="prev-1 prev">Previous</button>
-              <button class="next-1 next">Next</button>
-            </div>
-          </div>
-
-          <div class="page">
             <div class="title">House Info:</div>
             <div class="field">
               <div class="label">House Address</div>
-              <input type="text" required />
+              <input type="text" id="location" name="location" required />
             </div>
-            <div class="field">
-              <div class="label">House size (m²)</div>
-              <input type="Number" required />
-            </div>
-            <div class="field">
-              <div class="label">confition of house</div>
-              <select required>
-                <option>Perfect</option>
-                <option>Good</option>
-                <option>bad</option>
-              </select>
-            </div>
-            <div class="field">
-              <div class="label">House Description (optional)</div>
-              <input type="text" />
-            </div>
+
             <div class="field btns">
               <button class="prev-1 prev">Previous</button>
               <button class="next-1 next">Next</button>
@@ -146,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <div class="page">
             <div class="title">House Image:</div>
             <div class="field">
-              <input type="file" accept=".pdf" id="myFile" name="filename" />
+              <input type="file" accept=".pdf" id="myFile" name="myFile" />
             </div>
 
             <div class="field btns">

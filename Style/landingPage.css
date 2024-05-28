@@ -98,7 +98,8 @@ a {
 /* ----navigation---- */
 
 nav {
-  background-color: rgb(96, 0, 0);
+  width: 50%;
+  margin: auto;
   color: #ccc;
   padding: 20px;
   display: flex;
@@ -108,15 +109,15 @@ nav {
 
 h2 {
   font-size: 15px;
-  color: #ccc;
+  color: #000000;
 }
 .navButton {
   padding-left: 25px;
   padding-right: 25px;
   padding-top: 12px;
   padding-bottom: 12px;
-  background-color: #ccc;
-  color: rgb(96, 0, 0);
+  color: #ccc;
+  background-color: rgb(96, 0, 0);
   border: none;
   border-radius: 999px;
   cursor: pointer;
