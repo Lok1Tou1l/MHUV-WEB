@@ -17,7 +17,7 @@
   <body>
 
   <?php
-  include 'database.php'
+  include 'database.php';
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $targetDir = "uploads/";
     $targetFile = $targetDir . basename($_FILES["file"]["name"]);
@@ -41,13 +41,14 @@
       $uploadOk = 0;
   }
   
+  
   // Check if file is a PDF
   $fileType = pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
   if($fileType != "pdf") {
       echo "Only PDF files are allowed.";
       $uploadOk = 0;
   }
-  
+
   // Upload file if all checks pass
   if ($uploadOk == 1) {
       if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
@@ -83,6 +84,8 @@
       } else {
           echo "Error uploading file.";
       }
+    }
+}
   ?>
     <div class="container">
       <header>upload a house</header>

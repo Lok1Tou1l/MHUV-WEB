@@ -1,5 +1,5 @@
 CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
+    id INT PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
@@ -8,8 +8,8 @@ CREATE TABLE users (
 );
 
 CREATE TABLE Houses (
-    id SERIAL AUTO_INCREMENT PRIMARY KEY,
-    user_id SERIAL NOT NULL,
+    id SERIAL PRIMARY KEY,
+    user_id int NOT NULL,
     name VARCHAR(255) NOT NULL,
     location VARCHAR(255) NOT NULL,
     pdf BLOB,
