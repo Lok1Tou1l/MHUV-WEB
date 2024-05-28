@@ -1,38 +1,3 @@
-<?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $targetDir = "uploads/";
-  $targetFile = $targetDir . basename($_FILES["file"]["name"]);
-  $uploadOk = 1;
-  $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-
-  // Check if file is a PDF
-  if ($fileType != "pdf") {
-    echo "Only PDF files are allowed.";
-    $uploadOk = 0;
-  }
-
-  // Check if file already exists
-  if (file_exists($targetFile)) {
-    echo "File already exists.";
-    $uploadOk = 0;
-  }
-
-  // Check file size (optional)
-  if ($_FILES["file"]["size"] > 500000) {
-    echo "File size exceeds the limit.";
-    $uploadOk = 0;
-  }
-
-  // Upload file if all checks pass
-  if ($uploadOk == 1) {
-    if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
-      echo "File uploaded successfully.";
-    } else {
-      echo "Error uploading file.";
-    }
-  }
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -50,6 +15,75 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     />
   </head>
   <body>
+
+  <?php
+  include 'database.php'
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $targetDir = "uploads/";
+    $targetFile = $targetDir . basename($_FILES["file"]["name"]);
+    $uploadOk = 1;
+    $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+    // Check if file is a PDF
+    if ($fileType != "pdf") {
+      echo "Only PDF files are allowed.";
+      $uploadOk = 0;
+    }
+
+    // Check if file already exists
+    if (file_exists($targetFile)) {
+      echo "File already exists.";
+      $uploadOk = 0;
+    }
+
+    if ($_FILES["file"]["size"] > 500000) {
+      echo "File size exceeds the limit.";
+      $uploadOk = 0;
+  }
+  
+  // Check if file is a PDF
+  $fileType = pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
+  if($fileType != "pdf") {
+      echo "Only PDF files are allowed.";
+      $uploadOk = 0;
+  }
+  
+  // Upload file if all checks pass
+  if ($uploadOk == 1) {
+      if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
+      
+          // Get the file details
+          $user_id = $_SESSION['user'];
+          $name = isset($_POST['name']) ? $_POST['name'] : '';
+          $location = isset($_POST['location']) ? $_POST['location'] : '';
+          $pdf = file_get_contents($targetFile); // Read file content
+          $status = "Waiting"; 
+  
+          // Create connection
+          $conn = new mysqli($dbServer, $dbUsername, $dbPassword, $dbName);
+          // Check connection
+          if ($conn->connect_error) {
+              die("Connection failed: " . $conn->connect_error);
+          }
+  
+          // Prepare and bind the file details
+          $stmt = $conn->prepare("INSERT INTO Houses (user_id, name, location, pdf, status) VALUES (?, ?, ?, ?, ?)");
+          $stmt->bind_param("issss", $user_id, $name, $location, $pdf, $status);
+  
+          // Execute the statement
+          if ($stmt->execute()) {
+              echo "File uploaded successfully.";
+          } else {
+              echo "Error uploading file.";
+          }
+  
+          // Close the statement and connection
+          $stmt->close();
+          $conn->close();
+      } else {
+          echo "Error uploading file.";
+      }
+  ?>
     <div class="container">
       <header>upload a house</header>
       <div class="progress-bar">
