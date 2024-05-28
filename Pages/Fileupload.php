@@ -114,7 +114,7 @@
         </div>
       </div>
       <div class="form-outer">
-        <form action="uploadFile.php" method='POST'>
+        <form action="Fileupload.php" method='POST'>
           <div class="page slide-page">
             <div class="title">Basic Info:</div>
             <div class="field">
@@ -148,7 +148,7 @@
 
             <div class="field btns">
               <button class="prev-1 prev">Previous</button>
-              <button type="submit" class="next-1 next">submit</button>
+              <button type="submit" name='submit' class="next-1 next">submit</button>
               <!-- please make it when you click submit it takes him to index page -->
             </div>
           </div>

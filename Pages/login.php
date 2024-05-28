@@ -41,7 +41,7 @@ if (isset($_POST["submit"])) {
                 if (password_verify($password, $row['password'])) {
                     $_SESSION['user'] = $row['id'];
                     echo "<div class='alert alert-success'>You are logged in successfully.</div>";
-                    header('location:home.php');
+                    header('location:index.html');
                 } else {
                     echo "<div class='alert alert-danger'>Incorrect password.</div>";
                 }

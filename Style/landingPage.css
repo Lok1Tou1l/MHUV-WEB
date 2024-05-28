@@ -269,3 +269,9 @@ a {
   padding-top: 50px;
   text-align: center;
 }
+
+.nav-side {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
